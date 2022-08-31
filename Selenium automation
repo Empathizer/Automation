@@ -1,0 +1,22 @@
+import selenium                                     
+                                                     #import selinium framework
+from selenium import webdriver                       #import selinium web driver which we firstly install from google
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys      #importing keys
+from selenium.webdriver.chrome.service import Service
+
+url = "https://Google.com"                           #url of google
+path = Service('C:/chromedriver.exe')                #path of webdrivers
+driver = webdriver.Chrome(service= path)
+driver.maximize_window()
+driver.get(url)
+
+search = driver.find_element(By.CSS_SELECTOR, 'input[title="Search"]')
+search.send_keys('paragliding')
+search.send_keys(Keys.ENTER)
+tags = driver.find_elements(By.CLASS_NAME, 'MUFPAc')
+for i in tags:
+    video = i.find_elements(By.CLASS_NAME, 'hdtb-mitem')[2]
+    video.click()
+    youtube = driver.find_element(By.CLASS_NAME,'U1TUId')
+    youtube.click()
