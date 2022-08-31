@@ -1,3 +1,3 @@
 # Automation/Google bot
 
-automation the google by using selinum 
+automation of the google by using selinum in python language.
