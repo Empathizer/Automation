@@ -1,0 +1,31 @@
+timeimport time
+
+import selenium
+                                                     #import selinium framework
+from selenium import webdriver                       #import selinium web driver which we firstly install from google
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys      #importing keys
+from selenium.webdriver.chrome.service import Service
+from bs4 import BeautifulSoup
+
+
+url = "https://www.oreillyauto.com/"                           #url of google
+path = Service('C:/chromedriver.exe')                #path of webdrivers
+chrome_options = webdriver.ChromeOptions()
+prefs = {"profile.default_content_setting_values.notifications" : 2}              ## Handle alert chrome selenium driver !!!
+chrome_options.add_experimental_option("prefs",prefs)
+driver = webdriver.Chrome(chrome_options=chrome_options, service=path)
+# driver = webdriver.Chrome(service= path)
+driver.maximize_window()
+
+driver.get(url)
+
+body = driver.find_element(By.XPATH, '/html/body/')
+body.send_keys(Keys.PAGE_DOWN)
+body.send_keys(Keys.PAGE_DOWN)
+body.send_keys(Keys.PAGE_DOWN)
+body.send_keys(Keys.PAGE_DOWN)
+
+driver.switch_to.window(driver.window_handles[1])
+k = driver.find_element(By.XPATH, '/html/body/div[5]/footer/div[3]/div/div[1]/div[2]/div[2]/ul/li[1]')
+k.click()
